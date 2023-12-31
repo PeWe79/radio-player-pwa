@@ -11,6 +11,7 @@ export const en = {
     halo: 'HALO',
     trunk: 'TRUNK',
     birds: 'BIRDS',
+    rings: 'RINGS',
     tw_listening_to : 'Entrain d\'écouter ',
     live_on : 'LIVE ON '
 }

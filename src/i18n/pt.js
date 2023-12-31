@@ -11,5 +11,6 @@ export const pt = {
     halo: 'HALO',
     trunk: 'TRUNK',
     birds: 'BIRDS',
+    rings: 'RINGS',
 
 }

@@ -6,13 +6,14 @@
 </template>
 
 <script>
-import HALO from '../../../js/lib/vanta.halo.min'
-import TRUNK from '../../../js/lib/vanta.trunk.min'
-import WAVES from '../../../js/lib/vanta.waves.min'
-import CLOUDS2 from '../../../js/lib/vanta.clouds2.min'
-import BIRDS from '../../../js/lib/vanta.birds.min'
-import mAudio from '../../../js/audio';
-import {trunkNum} from '../../../js/utils'
+import HALO from '../../../js/lib/vanta.halo.min.js'
+import TRUNK from '../../../js/lib/vanta.trunk.min.js'
+import WAVES from '../../../js/lib/vanta.waves.min.js'
+import CLOUDS2 from '../../../js/lib/vanta.clouds2.min.js'
+import BIRDS from '../../../js/lib/vanta.birds.min.js'
+import RINGS from '../../../js/lib/vanta.rings.min.js'
+import mAudio from '../../../js/audio.js';
+import {trunkNum} from '../../../js/utils.js'
 
 export default {
 	name: "audioVisualizations",
@@ -66,48 +67,51 @@ export default {
 			window.addEventListener( 'resize', this.updateSize.bind( this ) );
 		},
 		setupAnimation(type){
-		let vantaOptions = {
-			el: document.querySelector( '#canvas-animation' ),
-			mouseControls: true,
-			touchControls: true,
-			gyroControls: false,
-			minHeight: this.mBox.height ,
-			minWidth: this.mBox.width,
-			color: 0x1496dc,
-			scale: 1.00,
-			backgroundColor: 0,
-			cloudColor: 0xe1ca,
-			lightColor: 0xe69191,
-			texturePath: "img/noise.png",
-			speed: 2.30,
-		};
-		switch (type){
-			default:
-			case '_HALO':
-				this.audioVizu = HALO(vantaOptions)
-				break;
-			case '_TRUNK':
-				this.audioVizu = TRUNK(vantaOptions)
-				break;
-			case '_WAVES' :
-				this.audioVizu = WAVES(vantaOptions)
-				break;
-			case '_CLOUD' :
-				this.audioVizu = CLOUDS2(vantaOptions)
-				break;
-			case '_BIRDS' :
-				this.audioVizu = BIRDS(vantaOptions)
-				break;
-      	}
-    },
-    updateSize(){
-		this.mBox = this.mWrap.getBoundingClientRect();
-		this.audioVizu.setOptions({
-			minHeight: this.mBox.height,
-			minWidth: this.mBox.width,
-		});
-		this.audioVizu.resize()
-    },
+			let vantaOptions = {
+				el: document.querySelector( '#canvas-animation' ),
+				mouseControls: true,
+				touchControls: true,
+				gyroControls: false,
+				minHeight: this.mBox.height ,
+				minWidth: this.mBox.width,
+				color: 0x1496dc,
+				scale: 1.00,
+				backgroundColor: 0,
+				cloudColor: 0xe1ca,
+				lightColor: 0xe69191,
+				texturePath: "img/noise.png",
+				speed: 2.30,
+			};
+			switch (type){
+				default:
+				case '_HALO':
+					this.audioVizu = HALO(vantaOptions)
+					break;
+				case '_TRUNK':
+					this.audioVizu = TRUNK(vantaOptions)
+					break;
+				case '_WAVES' :
+					this.audioVizu = WAVES(vantaOptions)
+					break;
+				case '_CLOUD' :
+					this.audioVizu = CLOUDS2(vantaOptions)
+					break;
+				case '_BIRDS' :
+					this.audioVizu = BIRDS(vantaOptions)
+					break;
+				case '_RINGS' :
+					this.audioVizu = RINGS(vantaOptions)
+					break;
+			}
+		},
+		updateSize(){
+			this.mBox = this.mWrap.getBoundingClientRect();
+			this.audioVizu.setOptions({
+				minHeight: this.mBox.height,
+				minWidth: this.mBox.width,
+			});
+			this.audioVizu.resize()
+		},
 		// audio visualizer animation loop
 		updateCanvasTrunk(freq){
 			//Trunk
@@ -186,6 +190,9 @@ export default {
 					this.updateCanvaCloud(freq);
 					break;
 				case '_BIRDS':
+					this.updateCanvaCloud(freq);
+					break;
+				case '_RINGS':
 					this.updateCanvaCloud(freq);
 					break;
 				case '_DISABLE':

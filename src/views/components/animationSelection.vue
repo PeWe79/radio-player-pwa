@@ -7,6 +7,7 @@
 		<option value="_WAVES">{{ $t('waves') }}</option>
 		<option value="_CLOUD">{{ $t('cloud') }}</option>
 		<option value="_BIRDS">{{ $t('birds') }}</option>
+		<option value="_RINGS">{{ $t('rings') }}</option>
 		<option value="_DISABLE" selected>{{ $t('disable') }}</option>
 	</select>
 </template>
