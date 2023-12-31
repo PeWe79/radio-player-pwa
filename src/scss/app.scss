@@ -1,0 +1,334 @@
+// common
+@import './variables';
+@import './reset';
+@import './document';
+@import './common';
+@import './animations';
+@import './flexbox';
+@import './images';
+@import './forms';
+@import './popover';
+@import './type';
+@import './pwa';
+
+// app root
+.app-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: 100%;
+
+  @media #{$screenLarge} {
+    //height: 15em;
+    width: 80%;
+    margin: auto;
+  }
+  @media #{$screenXLarge} {
+    //height: 15em;
+    width: 60%;
+    margin: auto;
+  }
+
+
+}
+
+// player container
+.player-wrap {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  width: 100%!important;
+  height: 100%!important;
+  margin: 0!important;
+  background-color: $colorDocumentDark;
+  max-width: unset!important;
+  max-height: unset!important;
+  min-width: unset!important;
+  min-height: unset!important;
+
+  & > .player-bg,
+  & > .player-canvas {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  & > .player-bg {
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    filter: blur(12px);
+    -webkit-filter: blur(10px);
+    background-size: cover;
+    opacity: .4;
+  }
+  @media #{$screenMedium} {
+    margin: 0 ( $padSpace * 2 );
+    width: 100%;
+    height: 100%;
+    border-radius: $lineJoin;
+    box-shadow: $shadowContainer;
+  }
+}
+
+// player layout container
+.stationView {
+  @media #{$screenSmall} {
+    height: 94%;
+  }
+}
+.stationView,
+.player-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 94%;
+  @media #{$screenMedium} {
+    height: 100%;
+  }
+
+  .player-header,
+  .player-content,
+  .player-footer {
+    position: relative;
+  }
+  .player-header,
+  .player-footer {
+    padding: 0 $padSpace;
+    height: $headerHeight;
+    min-height: $headerHeight;
+    background-color: $colorCard;
+  }
+  .player-header {
+    & > h2 {
+      color: $colorPrimary;
+      font-size : x-large;
+      i { vertical-align: bottom; }
+    }
+  }
+  .player-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    @media #{$screenLarge} {
+      position: relative ;
+    }
+  }
+  .player-content {
+    flex: 1;
+    height: calc(100% + 100px);
+    overflow: hidden;
+    overflow-y: auto;
+    padding: $padSpace;
+    .player-channel{
+      @media #{$screenXLarge} {
+        margin: 0 auto;
+        width: 70%;
+      }
+    }
+
+    .current-song{
+      margin: auto;
+      width: 300px;
+      text-align: center;
+      div{
+        margin-top: 4px;
+      }
+      span{
+        font-size: 23px;
+
+      }
+    }
+    .home-station-list{
+      list-style-type: none;
+      #station{
+        cursor: pointer;
+        color:$colorBrightText;
+      }
+      #title{
+        color: $colorBright;
+      }
+      #artist {
+        font-size : 75%;
+      }
+      .station-play{
+        position:relative;
+      }
+      #station-logo img{
+        margin: 0 auto;
+      }
+      :hover .station-hover{display:block}
+      :hover #station-logo img{
+        transform: scale(1.2);
+        opacity: 0.5;
+      }
+      .station-hover{
+        position: absolute;
+        color: #D4C9C9;
+        display:none;
+        top:20%;
+        width:40px;
+        margin:0 auto; left:0px;
+        right:0px;
+        z-index:100;
+        i{
+          font-size : xxx-large;
+        }
+      }
+
+    }
+    #coverArt{
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      filter: drop-shadow(0 0 0.75rem slategrey);
+    }
+    & > section {
+      margin: auto 0; // prevent vertical aligned flex item from overflowing
+    }
+    @media #{$screenMedium} {
+      padding: $padSpace ( $padSpace * 2 );
+    }
+  }
+}
+
+// player greeting message
+.player-greet {
+  flex: 0.2;
+  padding: 2em;
+  @media #{$screenMedium} { flex: .3; }
+}
+
+// player tracklist
+.player-tracklist {
+  display: block;
+  position: relative;
+  list-style: none;
+
+  & > li + li {
+    margin-top: $padSpace;
+  }
+}
+
+// player footer controls
+.player-controls {
+  position: relative;
+}
+.player-stations-list-title {
+                    //color: $colorPrimary;
+                        text-transform: uppercase;
+                        color: wheat;
+                    }
+// player stations sidebar
+.player-stations {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba( $colorOverlay, 0 );
+  pointer-events: none;
+  z-index: 1;
+
+  .player-stations-sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    position: absolute;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    min-height: 100%;
+    max-height: 100%;
+    background-color: lighten( $colorDocumentDark, 2% );
+
+    @media #{$screenSmall} {
+      right: -420px;
+      width: 420px;
+    }
+
+    .player-stations-header,
+    .player-stations-footer {
+      padding: 0 $padSpace;
+      min-height: $headerHeight;
+      box-shadow: 0 0 3px rgba( black, 0.3 );
+    }
+    .player-stations-list {
+      display: block;
+      list-style: none;
+      overflow: hidden;
+      overflow-y: auto;
+      margin-left: -10px;
+      padding-left: 10px;
+      flex: 1;
+
+      .player-stations-list-item {
+        position: relative;
+        padding: $padSpace;
+        background-color: rgba( black, 0.1 );
+        cursor: pointer;
+
+        &:nth-child( odd ) {
+          background-color: rgba( black, 0.18 );
+        }
+        &:hover {
+          background-color: rgba( black, 0 );
+        }
+        &.active {
+          background-color: darken( $colorDocumentDark, 2% );
+        }
+
+        .nowplaying{
+          padding-top: 0.5em;
+        }
+        #live{
+          background-color: #D9184B;
+          color: #D4C9C9;
+          display: inline-flex;
+          opacity: 1;
+        }
+        #title{
+          display: block;
+          text-transform: none;
+        }
+        span{
+          color: #727CB3;
+        }
+
+      }
+    }
+  }
+
+  // slide out
+  &.visible {
+    background-color: $colorOverlay;
+    pointer-events: auto;
+    z-index: 1000;
+
+    .player-stations-sidebar {
+      transform: translateX( -320px );
+      box-shadow: $shadowOverlay;
+      @media #{$screenSmall} { transform: translateX( -420px ); }
+    }
+    .player-stations-list-item.active:before {
+      content: '';
+      display: block;
+      position: absolute;
+      transition: none;
+      transform: translateY( -50% );
+      top: 50%;
+      left: -10px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid darken( $colorDocumentDark, 2% );
+    }
+  }
+}

@@ -1,0 +1,34 @@
+// document setup
+html, body {
+  display: block;
+  position: relative;
+  width: 100%!important;
+  height: 100%!important;
+}
+html {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+@font-face {
+  font-display: swap;
+}
+body {
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
+  font-size: calc( #{$fontSize} - 6px );
+  line-height: $fontSpace;
+  color: $colorDocumentText;
+
+
+  @media #{$screenSmall} {
+    font-size: calc( #{$fontSize} - 4px );
+
+  }
+  @media #{$screenMedium} {
+    font-size: calc( #{$fontSize} - 2px );
+  }
+  @media #{$screenLarge} {
+    font-size: $fontSize;
+  }
+}
