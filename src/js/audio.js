@@ -6,7 +6,6 @@ import {AudioContext} from 'standardized-audio-context';
 export default {
     mAudio: new Audio(),
     mContext: new AudioContext(),
-    //mContext: new (new AudioContext || (window.AudioContext || window.webkitAudioContext))(),
     mFreq: new Uint8Array(),
     mSource: null,
     mGain: null,
