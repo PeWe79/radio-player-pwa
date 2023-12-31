@@ -39,7 +39,7 @@ export default {
         return this.mFreq;
     },
 
-    playAudio(){
+    playAudio() {
         if (this.mContext.state === 'running') {
             this.mFreq = new Uint8Array(this.mAnalyser.frequencyBinCount);
             this.mAudio.play().catch(e => {
@@ -52,7 +52,7 @@ export default {
             var events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
             var unlock = function unlock() {
                 console.log("audioContext state: " + audioCtx.state);
-                if (audioCtx.resume) audioCtx.resume().then(()=>{
+                if (audioCtx.resume) audioCtx.resume().then(() => {
                     console.log("audioContext resume state: " + audioCtx.state);
                     if (audioCtx.state !== 'suspended') {
                         events.forEach(function (event) {

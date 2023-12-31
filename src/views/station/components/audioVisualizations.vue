@@ -17,7 +17,7 @@ import {trunkNum} from '../../../js/utils.js'
 
 export default {
 	name: "audioVisualizations",
-	data:()=>{
+	data:() => {
 		return{
 			animationType: '_DISABLE',
 			visible: true,
@@ -31,7 +31,7 @@ export default {
 	watch: {
 	},
 	mounted() {
-		if(this._isPlayerVisible){
+		if(this._isPlayerVisible) {
 			this.setupCanvas();
 			this.updateCanvas();
 		}
@@ -43,7 +43,7 @@ export default {
 		
 	},
 	computed:{
-		_isPlayerVisible(){
+		_isPlayerVisible() {
 			return !(document.querySelector( '#player-wrap' ))
 		},
 	},
@@ -66,7 +66,7 @@ export default {
 			});
 			window.addEventListener( 'resize', this.updateSize.bind( this ) );
 		},
-		setupAnimation(type){
+		setupAnimation(type) {
 			let vantaOptions = {
 				el: document.querySelector( '#canvas-animation' ),
 				mouseControls: true,
@@ -82,7 +82,7 @@ export default {
 				texturePath: "/img/noise.png",
 				speed: 2.30,
 			};
-			switch (type){
+			switch (type) {
 				default:
 				case '_HALO':
 					this.audioVizu = HALO(vantaOptions)
@@ -104,7 +104,7 @@ export default {
 					break;
 			}
 		},
-		updateSize(){
+		updateSize() {
 			this.mBox = this.mWrap.getBoundingClientRect();
 			this.audioVizu.setOptions({
 				minHeight: this.mBox.height,
@@ -113,31 +113,7 @@ export default {
 			this.audioVizu.resize()
 		},
 		// audio visualizer animation loop
-		updateCanvasTrunk(freq){
-			//Trunk
-			let chaos  = trunkNum(0.5,10,freq[ 1 ]|0)
-			// let chaos  = trunkNum(0.5,10,freq[ 1 ]|0)
-			let spacing  =trunkNum(0.2,7,freq[ 16 ]|0)
-			this.audioVizu.setOptions({
-				spacing:spacing,
-				chaos:chaos,
-				//color:color
-			});
-		},
-		updateCanvasWaves(freq){
-			let waveHeight  = trunkNum(2,40,freq[ 1 ]|0);
-			let shininess = trunkNum(3,100,freq[ 16 ]|0)
-			let waveSpeed = trunkNum(0.2,1.7,freq[ 3 ]|0)
-			let zoom = trunkNum(0.7,1.8,freq[ 16 ]|0)
-
-			this.audioVizu.setOptions({
-				shininess: shininess,
-				waveHeight: waveHeight,
-				waveSpeed: waveSpeed,
-				zoom: zoom,
-			});
-		},
-		updateCanvaHalo(freq){
+		updateCanvaHalo(freq) {
 			//Halo
 			let size = trunkNum(0.2,2,freq[ 1 ]|0);
 			let amplitudeFactor  = trunkNum(0,3,freq[ 50 ]|0);
@@ -149,7 +125,32 @@ export default {
 				xOffset: xOffset
 			});
 		},
-		updateCanvaCloud(freq){
+		updateCanvasWaves(freq) {
+			let waveHeight  = trunkNum(2,40,freq[ 1 ]|0);
+			let shininess = trunkNum(3,100,freq[ 16 ]|0)
+			let waveSpeed = trunkNum(0.2,1.7,freq[ 3 ]|0)
+			let zoom = trunkNum(0.7,1.8,freq[ 16 ]|0)
+
+			this.audioVizu.setOptions({
+				shininess: shininess,
+				waveHeight: waveHeight,
+				waveSpeed: waveSpeed,
+				zoom: zoom,
+				scale: 1.00,
+				scaleMobile: 1.00
+			});
+		},
+		updateCanvasTrunk(freq) {
+			//Trunk
+			let chaos  = trunkNum(0.5,10,freq[ 1 ]|0)
+			let spacing  =trunkNum(0.2,7,freq[ 16 ]|0)
+			this.audioVizu.setOptions({
+				spacing:spacing,
+				chaos:chaos,
+				//color:color
+			});
+		},
+		updateCanvaCloud() {
 			//Cloud
 			this.audioVizu.setOptions({
 				mouseControls: true,
@@ -163,8 +164,7 @@ export default {
 				speed: 1.5
 			});
 		},
-		updateCanvaRings() {
-			// RINGS
+		updateCanvaBirds() {
 			this.audioVizu.setOptions({
 				mouseControls: true,
 				touchControls: true,
@@ -172,9 +172,19 @@ export default {
 				scale: 1.00
 			})
 		},
+		updateCanvaRings() {
+			// RINGS
+			this.audioVizu.setOptions({
+				mouseControls: true,
+				touchControls: true,
+				gyroControls: false,
+				scale: 1.00,
+				scaleMobile: 1.00
+			})
+		},
     
 		//TODO:  setup a timer to update fps count and drop it down to 10fps for devices with slow compute resources
-		frame_limit(){
+		frame_limit() {
 			this.fps_counter++;
 			if(this.fps_counter < 25 ) return false;
 			this.fps_counter = 0;
@@ -200,7 +210,7 @@ export default {
 					this.updateCanvaCloud();
 					break;
 				case '_BIRDS':
-					this.updateCanvaCloud(freq);
+					this.updateCanvaBirds();
 					break;
 				case '_RINGS':
 					this.updateCanvaRings();
@@ -212,7 +222,7 @@ export default {
 					return;
       		}
     	},
-		animationDestroy(){
+		animationDestroy() {
 			if (this.audioVizu) {
 				this.audioVizu.destroy()
 				this.audioVizu = null

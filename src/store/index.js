@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
 import favorites from './Favorites';
 import nowplaying from "./nowplaying";
 import playerConfig from "./playerConfig";

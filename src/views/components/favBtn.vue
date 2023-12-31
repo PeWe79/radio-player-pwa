@@ -6,24 +6,28 @@
 </template>
 
 <script>
-    import { mapGetters  } from 'vuex';
+import {mapGetters} from 'vuex';
 
-    export default {
-        name: 'favBtn',
-        props: {
-            id: { type: Number, default: '', required: true }
-        },
-        mounted(){
-            this.$store.dispatch('favorites/fetchFavorites')
-        },
-        computed: {
-            ...mapGetters('favorites',['isFavorites']),
-        },
-        methods: {
-          // toggle favorite channel by id
-          toggleFavorite() {
-            this.$store.dispatch('favorites/toggleFavorite', this.id)
-          },
+export default {
+    name: 'favBtn',
+    props: {
+        id: { 
+            type: Number, 
+            default: '', 
+            required: true 
         }
+    },
+    mounted() {
+        this.$store.dispatch('favorites/fetchFavorites')
+    },
+    computed: {
+        ...mapGetters('favorites',['isFavorites']),
+    },
+    methods: {
+        // toggle favorite channel by id
+        toggleFavorite() {
+            this.$store.dispatch('favorites/toggleFavorite', this.id)
+        },
     }
+}
 </script>

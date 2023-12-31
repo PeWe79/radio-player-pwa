@@ -1,5 +1,5 @@
-import axios from 'axios';
-import config from 'config';
+// import axios from 'axios';
+// import config from 'config';
 
 export default {
     api_url : "https://origin.cloudmu.id/?url=https://api.textyl.co/api/lyrics?q=",
@@ -15,30 +15,24 @@ export default {
             console.log(response.headers.get('date'))
             this.serverTime = new Date().valueOf(response.headers.get('date'))
 
-
             const jsonValue = await response.json()
-                //.then((data)=>{
+                //.then((data) => {
                 //console.log(this._parseLyrics(jsonValue));
             //}); // Get JSON value from the response body
 
             return Promise.resolve(this._parseLyrics(jsonValue));
         } else {
             return Promise.reject('*** Cannot get lyrics');
-
         }
-
     },
-    _parseLyrics(lyrics){
+    _parseLyrics(lyrics) {
         let output=[];
         let temp ={content:null,time:null}
-        for(let item of lyrics){
+        for(let item of lyrics) {
             temp.content = item.lyrics
             temp.time = item.seconds * 1000
             output.push(temp)
         }
-
-
         return output;
     }
-
 }

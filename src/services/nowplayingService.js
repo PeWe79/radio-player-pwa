@@ -15,20 +15,19 @@ axios.interceptors.request.use( x => {
 })
 
 axios.interceptors.response.use( x => {
-        console.log(`Execution time for: ${x.config.url} - ${ new Date().getTime() - x.config.meta.requestStartedAt} ms`)
-        return x;
-    },
-    // Handle 4xx & 5xx responses
-    x => {
-        console.error(`Execution time for: ${x.config.url} - ${new Date().getTime() - x.config.meta.requestStartedAt} ms`)
-        throw x;
-    }
-)
+    console.log(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
+    return x;
+},
+// Handle 4xx & 5xx responses
+x => {
+    console.error(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
+    throw x;
+})
 
 export default {
     // get now playing response
     config : getters["playerConfig/getConfig"],
-    get(){
+    get() {
         let apiurl = config.api_url+'/nowplaying';
         return axios.get( apiurl ).then( res => {
             const list = this._parseChannels( res.data );
@@ -62,37 +61,37 @@ export default {
 
     // parse channels list from api response
     _parseChannel( c ) {
-                c.mp3file   = c.listen_url;
-                c.image     = '/img/stations/'+c.shortcode+'.png' ;
-                c.songsurl  = config.api_url+'/nowplaying/'+ c.id;
-                c.route     = '/station/'+ c.shortcode;
-                c.favorite  = false;
-                c.active    = false;
+        c.mp3file   = c.listen_url;
+        c.image     = '/img/stations/'+c.shortcode+'.png' ;
+        c.songsurl  = config.api_url+'/nowplaying/'+ c.id;
+        c.route     = '/station/'+ c.shortcode;
+        c.favorite  = false;
+        c.active    = false;
 
         return c;
     },
     // TODO finish filter for stations :
     _parseChannels( channels ) {
         let output = [];
-            console.log("parchannels for loop ")
-            for ( let ch of channels ) {
-                let c = ch.station;
+        console.log("parchannels for loop ")
+        for ( let ch of channels ) {
+            let c = ch.station;
 
-                if( config.stationsFilterById != null && !config.stationsFilterById.includes(c.id)){
-                    c = this._parseChannel( c )
-                    //c.image     = '/img/'+c.shortcode+'.png';
-                    //c.songsurl  = config.api_url+'/nowplaying/'+ c.id;
-                    //c.route     = '/channel/'+ c.shortcode;
-                    //c.favorite  = false;
-                    //c.active    = false;
-                    ch.station = c;
-                    output.push( ch );
-                }
+            if( config.stationsFilterById != null && !config.stationsFilterById.includes(c.id)) {
+                c = this._parseChannel( c )
+                //c.image     = '/img/'+c.shortcode+'.png';
+                //c.songsurl  = config.api_url+'/nowplaying/'+ c.id;
+                //c.route     = '/channel/'+ c.shortcode;
+                //c.favorite  = false;
+                //c.active    = false;
+                ch.station = c;
+                output.push( ch );
             }
+        }
         return output;
     },
-    _stationsFilter(){
-      return config.stationsFilterById;
+    _stationsFilter() {
+        return config.stationsFilterById;
     },
 
     _parseNowplaying() {

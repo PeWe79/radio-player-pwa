@@ -2,7 +2,6 @@
 	<select name="animation" v-model="animationTypeSelect">
 		<option disabled value="">{{ $t('choose_animation') }}</option>
 		<option value="_TRUNK">{{ $t('trunk') }}</option>
-		<!-- <option value="_SPHERE">SPHERE</option>-->
 		<option value="_HALO">{{ $t('halo') }}</option>
 		<option value="_WAVES">{{ $t('waves') }}</option>
 		<option value="_CLOUD">{{ $t('cloud') }}</option>
@@ -16,8 +15,8 @@
 import animatinoService from "@/services/animatinoService";
 export default {
 	name: "animationSelection",
-	data: ()=>{
-		return{
+	data: ()=> {
+		return {
 			animationTypeSelect:''
 		}
 	},

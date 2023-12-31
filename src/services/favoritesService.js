@@ -9,7 +9,7 @@ export default {
            //      throw new Error(error);
            //  });
     },
-    set(favoritesList){
+    set(favoritesList) {
         _store.set(favKey, favoritesList);
     }
 };
