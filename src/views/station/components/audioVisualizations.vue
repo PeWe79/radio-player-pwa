@@ -79,7 +79,7 @@ export default {
 				backgroundColor: 0,
 				cloudColor: 0xe1ca,
 				lightColor: 0xe69191,
-				texturePath: "img/noise.png",
+				texturePath: "/img/noise.png",
 				speed: 2.30,
 			};
 			switch (type){
@@ -150,17 +150,27 @@ export default {
 			});
 		},
 		updateCanvaCloud(freq){
-			//Halo
+			//Cloud
 			this.audioVizu.setOptions({
 				mouseControls: true,
 				touchControls: true,
 				gyroControls: false,
 				scale: 1.00,
-				texturePath: "img/noise.png",
-				skyColor: 0x287faa,
-				cloudColor: 0x46577a,
+				texturePath: "/img/noise.png",
+				skyColor: 0x5ca6ca,
+				cloudColor: 0x334d80,
+				lightColor: 0xffffff,
 				speed: 1.5
 			});
+		},
+		updateCanvaRings() {
+			// RINGS
+			this.audioVizu.setOptions({
+				mouseControls: true,
+				touchControls: true,
+				gyroControls: false,
+				scale: 1.00
+			})
 		},
     
 		//TODO:  setup a timer to update fps count and drop it down to 10fps for devices with slow compute resources
@@ -187,13 +197,13 @@ export default {
 					this.updateCanvasTrunk(freq);
 					break;
 				case '_CLOUD':
-					this.updateCanvaCloud(freq);
+					this.updateCanvaCloud();
 					break;
 				case '_BIRDS':
 					this.updateCanvaCloud(freq);
 					break;
 				case '_RINGS':
-					this.updateCanvaCloud(freq);
+					this.updateCanvaRings();
 					break;
 				case '_DISABLE':
 				default:

@@ -3,7 +3,7 @@
     <!-- player middle content area -->
     <main class="player-content flex-autorow stationView">
         <div class="player-greet flex-1" id="home">
-                <div class="fx fx-slide-left push-bottom"><h1 v-html="$t('pick_a_station')">Pick a Station</h1></div>
+                <div class="fx fx-slide-left push-bottom"><h1>Pick a Station</h1></div>
 
                 <div class="fx fx-slide-up fx-delay-2 pad-top">
                     <button class="cta-btn" @click="toggleSidebar( true )"><i
