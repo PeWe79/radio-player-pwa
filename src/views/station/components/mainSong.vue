@@ -15,8 +15,8 @@
 					<favBtn :id="station.id" class="pad-right" style="font-size: x-large"></favBtn>
 				</div>
 				<!-- <div class="text-nowrap">
-					<p class="text-clip text-uppercase" style="width: 200px">a {{ station.description  | toText }} &nbsp;</p>
-				</div>-->
+					<p class="text-clip text-uppercase" style="width: 200px"> {{ station.description  | toText }} &nbsp;</p>
+				</div> -->
 			</div>
 		</div>
 

@@ -185,7 +185,7 @@ export default {
 			})
 		},
     
-		//TODO:  setup a timer to update fps count and drop it down to 10fps for devices with slow compute resources
+		//TODO: setup a timer to update fps count and drop it down to 10fps for devices with slow compute resources
 		frame_limit() {
 			this.fps_counter++;
 			if(this.fps_counter < 25 ) return false;
