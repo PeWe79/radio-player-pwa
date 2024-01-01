@@ -1,6 +1,6 @@
 <template >
     <button :active="isFavorites(this.id)" class="favBtn" @click.stop="toggleFavorite"  aria-label="Favorite">
-        <i v-if="isFavorites(this.id)" class="fas fa-heart text-primary fx fx-drop-in" key="on"></i>
+        <i v-if="isFavorites(this.id)" class="fas fa-heart text-fav fx fx-drop-in" key="on"></i>
         <i v-else class="far fa-heart fx fx-drop-in" key="off"></i>
     </button>
 </template>
