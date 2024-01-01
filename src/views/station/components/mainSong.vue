@@ -35,8 +35,8 @@
 						class="fx fx-fade-in"/>
 				</div>
 				<div class="pad-bottom current-song">
-					<h3 class="text-secondary">{{ currentsong.title }}</h3>
-					<h5 class="text-bright text-faded">{{ currentsong.artist }}</h5>
+					<h4 class="text-secondary">{{ currentsong.title }}</h4>
+					<h6 class="text-bright text-faded">{{ currentsong.artist }}</h6>
 				</div>
 
 			</div>
