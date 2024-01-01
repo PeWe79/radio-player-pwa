@@ -8,7 +8,6 @@
 					<!-- songs list -->
 					<songs-history></songs-history>
 				</div>
-				<syncLyrics></syncLyrics>
 			</section>
 		</main>
 		<!-- player footer with controls -->
@@ -25,7 +24,6 @@
 <script>
 import mAudio from '../../js/audio';
 import favBtn from "@/views/components/favBtn";
-import syncLyrics from '@/views/station/components/syncLyrics'
 import footerPlayer from '@/views/station/components/footerPlayer'
 import {mapGetters, mapState} from 'vuex';
 import SongsHistory from "@/views/station/components/songsHistory";
@@ -37,7 +35,6 @@ export default {
 		MainSong,
 		SongsHistory,
 		favBtn,
-		syncLyrics,
 		footerPlayer,
 	},
 	data: () => {
