@@ -8,7 +8,7 @@
  You can play locally with the player. Todo so you can clone the project then install all the dependencies .
 
 ```
-git clone https://github.com/oussamatn/radio-player.git
+git clone https://github.com/PeWe79/radio-player-pwa.git
 cd radio-player
 npm install
 ```
@@ -55,7 +55,6 @@ radio-player/
 |    |   |- ...
 ```
 
-
 # Deployment 
 
 You can deploy the player in the same server as AzuraCast Core and serve the player trough Nginx-Reverse proxy.  
@@ -64,18 +63,18 @@ First you need to create a new domain or sub-domain name and configure it as you
 ## Docker Compose 
 Go to your Azuracast installation folder then clone the project
 ```properties
-git clone https://github.com/oussamatn/radio-player.git
+git clone https://github.com/PeWe79/radio-player-pwa.git
 ```
 
 #### config.json
-Update you API URL and radio name inside the configuration file : config.json ( file inside `public/assets`)
+Rename config-sample.json to config.json & Update you API URL and radio name inside the configuration file : config.json ( file inside `public/`)
 ``` JSON
 {
   "api_url" : "https://azuracast-backend-link.com/api",
   "title": "Azuracast | Radio Station",
   "description" : "Live Radio 24/7 Hits music Only ",
   "manifest" : {
-    "short_name": "Suanten Radio",
+    "short_name": "Azuracast Radio",
     "orientation": "portrait",
     "display": "standalone",
     ...

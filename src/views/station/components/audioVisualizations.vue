@@ -105,6 +105,7 @@ export default {
 			}
 		},
 		updateSize() {
+			if (this.audioVizu==null) return;
 			this.mBox = this.mWrap.getBoundingClientRect();
 			this.audioVizu.setOptions({
 				minHeight: this.mBox.height,

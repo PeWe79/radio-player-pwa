@@ -1,9 +1,9 @@
 {
-    "api_url" : "https://you.stream.com/api",
-    "title": "Your Radio | Radio Station",
+    "api_url" : "https://azuracast-backend-link.com/api",
+    "title": "Azuracast Radio | Radio Station",
     "description" : "Live Radio 24/7 Hits music Only test",
     "manifest" : {
-      "short_name": "Your Radio",
+      "short_name": "Azuracast Radio",
       "orientation": "portrait",
       "display": "standalone",
       "start_url": "/?utm_source=pwa_homescreen",

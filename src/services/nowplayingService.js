@@ -15,12 +15,12 @@ axios.interceptors.request.use( x => {
 })
 
 axios.interceptors.response.use( x => {
-    console.log(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
+    // console.log(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
     return x;
 },
 // Handle 4xx & 5xx responses
 x => {
-    console.error(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
+    // console.error(`Execution time for: ${ x.config.url } - ${ new Date().getTime() - x.config.meta.requestStartedAt } ms`)
     throw x;
 })
 
@@ -31,7 +31,7 @@ export default {
         let apiurl = config.api_url+'/nowplaying';
         return axios.get( apiurl ).then( res => {
             const list = this._parseChannels( res.data );
-            console.log("Nowplaying Service :  get : ",list)
+            // console.log("Nowplaying Service :  get : ",list)
             return list;
         });
     },
@@ -49,12 +49,12 @@ export default {
 
     // fetch songs for a channel
     getSongs( channel_id ) {
-        console.log("Nowplaying Service :  getSongs : ", channel_id)
+        // console.log("Nowplaying Service :  getSongs : ", channel_id)
         let apiurl =   config.api_url+'/nowplaying/'+ channel_id;
         return axios.get( apiurl ).then( res => {
             //if ( !res.data ) return callback( error, [] );
             res.data.station = this._parseChannel( res.data.station );
-            console.log("Nowplaying Service :  getSongs : ", res.data)
+            // console.log("Nowplaying Service :  getSongs : ", res.data)
             return res.data ;
         });
     },
@@ -73,7 +73,7 @@ export default {
     // TODO finish filter for stations :
     _parseChannels( channels ) {
         let output = [];
-        console.log("parchannels for loop ")
+        // console.log("parchannels for loop ")
         for ( let ch of channels ) {
             let c = ch.station;
 

@@ -11,10 +11,10 @@ export default {
 
         const response = await fetch(apiurl); // Generate the Response object
         if (response.ok) {
-            console.log(response.headers.get('date'))
+            // console.log(response.headers.get('date'))
             this.serverTime = new Date().valueOf(response.headers.get('date'))
-            console.log(this.serverTime)
-            console.log(new Date().getTime())
+            // console.log(this.serverTime)
+            // console.log(new Date().getTime())
 
             const jsonValue = await response.json()
 

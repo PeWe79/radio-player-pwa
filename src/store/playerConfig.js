@@ -6,7 +6,7 @@ export const state = {
 export const actions = {
     async fetchConfig({ commit }) {
         console.time("setConfig")
-        console.log("%c fetchConfig" , 'background: black; color: white')
+        // console.log("%c fetchConfig" , 'background: black; color: white')
         let config = await ConfigService.getConfig();
         return new Promise((resolve, reject) => {
             try{
@@ -27,7 +27,7 @@ export const getters = {
 };
 export const mutations = {
     setConfig : (currentState, config) => {
-        console.log("%c setConfig :", 'background: green; color: white',config);
+        // console.log("%c setConfig :", 'background: green; color: white',config);
         console.timeEnd("setConfig")
         currentState.playerConfig = config;
     },
