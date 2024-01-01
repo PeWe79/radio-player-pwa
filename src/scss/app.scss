@@ -185,13 +185,13 @@
     }
     #coverArt{
       margin: auto;
-      width: 200px;
-      height: 200px;
-      border-radius: 8px;
+      width: 250px;
+      height: 250px;
+      border-radius: 5px;
       filter: drop-shadow(0 0 0.75rem slategrey);
     }
     & > section {
-      margin: auto 0; // prevent vertical aligned flex item from overflowing
+      margin: 1em 0; // prevent vertical aligned flex item from overflowing
     }
     @media #{$screenMedium} {
       padding: $padSpace ( $padSpace * 2 );
