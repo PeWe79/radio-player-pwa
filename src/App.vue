@@ -72,12 +72,12 @@
                                     </div>
                                 </div>
                                 <div class="text-small nowplaying" >
-                                    <div v-if="c.live.islive" id="live">LIVE:  </div>
+                                    <div v-if="c.live.islive" id="live">LIVE: </div>
                                    <span class="text-condense" id="title">
-                                        {{ c.now_playing.song.title  | toText }}
+                                        {{ c.now_playing.song.title | toText }}
                                     </span>
                                     <span class="text-uppercase text-small" id="artist">
-                                        {{ c.now_playing.song.artist  | toText }}
+                                        {{ c.now_playing.song.artist | toText }}
                                     </span>
                                 </div>
                             </aside>
@@ -96,7 +96,6 @@ import favBtn from "@/views/components/favBtn";
 import audioVisualizations from "@/views/station/components/audioVisualizations";
 import {mapGetters, mapState} from 'vuex';
 import {debounce} from "debounce";
-
 
 export default {
 	name: 'home',
@@ -123,6 +122,7 @@ export default {
 			document.querySelector('#_spnr').style.display = 'none';
 			document.querySelector('#player-wrap').style.opacity = '1';
 			document.addEventListener('visibilitychange', e => {
+				console.log(e);
 				this.visible = (document.visibilityState === 'visible')
 			});
 		},
@@ -140,7 +140,7 @@ export default {
 			if (k === 'Enter') return this.toggleSidebar(true);
 			if (k === 'Escape') return this.toggleSidebar(false);
 		},
-		debounceFilter: debounce(function (e) {
+		debounceFilter: debounce(function () {
 			this.filterStations()
 		}, 500),
 

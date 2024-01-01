@@ -6,7 +6,7 @@ export const state = {
 export const actions = {
     async fetchConfig({ commit }) {
         console.time("setConfig")
-        console.log("%c fetchConfig" , 'background: black; color: white')
+        console.log("%c fetchConfig" , "background: blue; color: white")
         let config = await ConfigService.getConfig();
         return new Promise((resolve, reject) => {
             try{

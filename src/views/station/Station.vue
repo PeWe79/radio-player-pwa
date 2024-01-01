@@ -23,8 +23,6 @@
 </template>
 
 <script>
-
-
 import mAudio from '../../js/audio';
 import favBtn from "@/views/components/favBtn";
 import syncLyrics from '@/views/station/components/syncLyrics'
@@ -156,15 +154,18 @@ export default {
 			const a = mAudio.setupAudio();
 
 			a.addEventListener('waiting', e => {
+				console.log(e);
 				this.playing = false;
 				this.loading = true;
 			});
 			a.addEventListener('playing', e => {
+				console.log(e);
 				this.setError('stream', '');
 				this.playing = true;
 				this.loading = false;
 			});
 			a.addEventListener('ended', e => {
+				console.log(e);
 				this.playing = false;
 				this.loading = false;
 			});
