@@ -15,9 +15,6 @@
 			</div>
 			<div class="text-clip push-left">
 				<span>{{ timeDisplay }}</span>
-				<!-- <span class="text-faded" v-if="hasChannel">&nbsp;|&nbsp;</span>-->
-				<!-- <span class="fx fx-fade-in fx-delay-1" v-if="station"-->
-				<!-- :key="stationId">{{ station.title }}</span>-->
 			</div>
 		</section>
 

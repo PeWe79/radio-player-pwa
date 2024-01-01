@@ -86,16 +86,6 @@ export default {
 		canPlay() {
 			return !!(this.stationId && !this.loading);
 		},
-		// // check if a channel is selected
-		// hasChannel() {
-		//     return this.stationId ? true : false;
-		// },
-		// // check for errors that would affect playback
-		// hasError() {
-		//     if (this.errors.channels && !this.channels.length) return true;
-		//     if (this.errors.stream) return true;
-		//     return false;
-		// },
 	},
 
 	// custom methods
