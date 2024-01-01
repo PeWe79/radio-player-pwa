@@ -9,10 +9,10 @@ export const actions = {
         console.log("%c fetchConfig" , "background: blue; color: white")
         let config = await ConfigService.getConfig();
         return new Promise((resolve, reject) => {
-            try{
+            try {
                 commit("setConfig",config);
                 resolve();
-            }catch (e) {
+            } catch (e) {
                 reject();
             }
         });

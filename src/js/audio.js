@@ -14,19 +14,25 @@ export default {
     // setup audio routing
     setupAudio() {
         console.log("setupAudio");
-        if (this.mSource ==null ) this.mSource = this.mContext.createMediaElementSource(this.mAudio);
+        if (this.mSource == null) this.mSource = this.mContext.createMediaElementSource(this.mAudio);
 
         //Audio gain to manage volume
-        if (this.mGain ==null ) this.mGain = this.mContext.createGain();
+        if (this.mGain == null) this.mGain = this.mContext.createGain();
         this.mSource.connect(this.mGain);
         this.mGain.connect(this.mContext.destination);
         // Wait for audio load buffer
-        this.mAudio.addEventListener('canplaythrough', e => {
-                this.playAudio();
+        this.mAudio.addEventListener('canplaythrough', () => {
+            this.playAudio();
         });
         // Frequency Analyzer
-        if (this.mAnalyser ==null ) this.mAnalyser = this.mContext.createAnalyser();
-        this.mSource.connect(this.mAnalyser);
+        // if (this.mAnalyser == null) this.mAnalyser = this.mContext.createAnalyser();
+        if (this.mAnalyser == null) {
+            this.mAnalyser = this.mContext.createAnalyser();
+            this.mAnalyser.connect(this.mContext.destination);
+        } else {
+            this.mSource.connect(this.mAnalyser);
+        }
+        // this.mSource.connect(this.mAnalyser);
 
         // Activate AudioContext on user event
         if (this.mContext.state === 'suspended') this.unlockAudioContext(this.mContext);
@@ -34,7 +40,7 @@ export default {
     },
     // update and return analyser frequency data
     getFreqData() {
-        if (this.mAnalyser ==null ) return 1;
+        if (this.mAnalyser == null) return 1;
         this.mAnalyser.getByteFrequencyData(this.mFreq);
         return this.mFreq;
     },

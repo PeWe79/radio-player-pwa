@@ -56,7 +56,7 @@ export default {
 		canPlay: Boolean,
 		playing: Boolean,
 		loading: Boolean,
-		config : Object,
+		config: Object,
 	},
 	data: () => {
 		return {

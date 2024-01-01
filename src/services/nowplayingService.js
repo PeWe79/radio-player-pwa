@@ -60,21 +60,22 @@ export default {
     },
 
     // parse channels list from api response
-    _parseChannel( c ) {
+    _parseChannel(c) {
         c.mp3file   = c.listen_url;
         c.image     = '/img/stations/'+c.shortcode+'.png' ;
         c.songsurl  = config.api_url+'/nowplaying/'+ c.id;
         c.route     = '/station/'+ c.shortcode;
         c.favorite  = false;
         c.active    = false;
+        // console.log("DATA CHANNEL=> " + c.shortcode);
 
         return c;
     },
     // TODO finish filter for stations :
-    _parseChannels( channels ) {
+    _parseChannels(channels) {
         let output = [];
         // console.log("parchannels for loop ")
-        for ( let ch of channels ) {
+        for (let ch of channels) {
             let c = ch.station;
 
             if( config.stationsFilterById != null && !config.stationsFilterById.includes(c.id)) {
@@ -93,7 +94,6 @@ export default {
     _stationsFilter() {
         return config.stationsFilterById;
     },
-
     _parseNowplaying() {
         return undefined;
     }
