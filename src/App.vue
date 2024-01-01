@@ -125,8 +125,6 @@ export default {
 			document.addEventListener('visibilitychange', e => {
 				this.visible = (document.visibilityState === 'visible')
 			});
-
-
 		},
 		setError(key, err) {
 			let errors = Object.assign({}, this.errors);
@@ -154,10 +152,9 @@ export default {
 				console.log("filteredStations: if ",this.search)
 				search = search.replace(/[^\w\s\-]+/g, '').replace(/[\r\s\t\n]+/g, ' ').trim();
 				this.filteredStations =  list.filter(item => item.station.name.toLowerCase().includes(search.toLowerCase()))
-			}else this.filteredStations = this.channels;
+			} else this.filteredStations = this.channels;
 			console.log("filteredStations",this.filteredStations)
 			console.log("filteredStations : searchText",this.searchText)
-
 		},
 	},
 	computed: {

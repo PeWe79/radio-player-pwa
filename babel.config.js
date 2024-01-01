@@ -1,23 +1,20 @@
 module.exports = {
   presets: [
-      ["@babel/env", {
-          "modules": false
-      }],
+		["@babel/env", {
+				"modules": false
+		}],
     '@vue/app'
   ],
-    sourceType: 'unambiguous',
-    plugins : [
-        "@babel/transform-async-to-generator",
-        //"@babel/transform-class-properties",
-        //"@babel/transform-runtime",
-        //"@babel/lodash"
-    ],
+	sourceType: 'unambiguous',
+	plugins : [
+		"@babel/transform-async-to-generator"
+	],
   env: {
     production: {
       plugins: ["transform-remove-console" ]
     },
-      development:{
-          plugins: ["dynamic-import-node"]
-      }
+		development:{
+			plugins: ["dynamic-import-node"]
+		}
   }
 }
