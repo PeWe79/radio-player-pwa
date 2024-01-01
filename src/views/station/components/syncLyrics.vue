@@ -48,8 +48,8 @@ export default {
 		},
 		setupLyricMaint() {
 			this.elapsedtime = Math.round(new Date() - this.track.played_at * 1000)
-			console.log("elapsedtime=" + this.elapsedtime)
-			console.log("played_at=" + this.track.played_at)
+			// console.log("elapsedtime=" + this.elapsedtime)
+			// console.log("played_at=" + this.track.played_at)
 			this.searchForFirst();
 			this.refreshHandler = setInterval(this.searchForFirst, this.timer * 1000)
 		},
@@ -58,9 +58,9 @@ export default {
 				let item = this.lyrics[i];
 				if (item == null) break;
 				if (item.time >= this.elapsedtime) {
-				console.log(item.time + " - " + this.elapsedtime + " " + item.content)
-				this.activeLyric = i;
-				break;
+					// console.log(item.time + " - " + this.elapsedtime + " " + item.content)
+					this.activeLyric = i;
+					break;
 				}
 			}
 			this.elapsedtime =Math.round(new Date() - this.track.played_at * 1000)
@@ -74,7 +74,7 @@ export default {
 	},
 
 	mounted() {
-		console.log("mounted : syncLyrics")
+		// console.log("mounted : syncLyrics")
 		this.pullLyrics();
 	},
 	beforeDestroy() {
@@ -82,13 +82,11 @@ export default {
 	},
 	watch: {
 		song() {
-			console.log("watch song : pullLyrics()->" + this.song.title)
+			// console.log("watch song : pullLyrics()->" + this.song.title)
 			if (this.song.id !== this.currentSongId) this.pullLyrics()
 		}
 	}
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

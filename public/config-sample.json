@@ -19,7 +19,7 @@
     "meta": {
       "url" : "https://you.stream.com",
       "image" : "https://player.jelliti.me/img/icon.png",
-      "locale" : "US_en"
+      "locale" : "en-US"
     },
     "twitter" : {
       "username" : null

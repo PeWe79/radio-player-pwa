@@ -22,7 +22,7 @@ export default {
 	},
 	async created() {
 		this.animationTypeSelect = await animatinoService.get();
-		console.log("created : " + this.animationTypeSelect);
+		// console.log("created : " + this.animationTypeSelect);
 	},
 	watch: {
 		animationTypeSelect() {

@@ -20,7 +20,7 @@ export const actions = {
     },
     async fetchNowplaying({ commit },stationId) {
         console.time("fetchNowplaying")
-        console.log("%c fetchNowplaying" , 'background: blue; color: white')
+        // console.log("%c fetchNowplaying" , 'background: blue; color: white')
         let nowplaying = await nowplayingService.get();
         return new Promise((resolve, reject) => {
             try {
@@ -34,13 +34,13 @@ export const actions = {
     },
     async fetchStations ({commit }) {
         console.time("fetchStations")
-        console.log("%c fetchStations" , 'background: blue; color: white')
+        // console.log("%c fetchStations" , 'background: blue; color: white')
         let Station = await nowplayingService.getChannels();
         commit("setStations",Station);
     },
     async fetchSongs ({commit },stationId) {
         console.time("fetchSongs")
-        console.log("%c fetchSongs" , 'background: blue; color: white')
+        // console.log("%c fetchSongs" , 'background: blue; color: white')
         let Songs = await nowplayingService.getSongs(stationId);
         return new Promise((resolve, reject) => {
             commit("setSongs",Songs);resolve();
@@ -61,7 +61,7 @@ export const getters = {
     },*/
     SongsByStation : (state) => {
         let stationid = state.stationId
-        console.log("getters : SongsByStation",stationid)
+        // console.log("getters : SongsByStation",stationid)
         return state.nowplaying.find((d) => (stationid) => (d.station.id === stationid)).songs ;
     },
     getIDfromShortcode : (state) => (shortcode) => {

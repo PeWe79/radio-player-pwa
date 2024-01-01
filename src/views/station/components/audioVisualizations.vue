@@ -36,7 +36,7 @@ export default {
 			this.updateCanvas();
 		}
 		this.$root.$on('selectAnimationType', data => {
-			console.log("on selectAnimationType:"+data);
+			// console.log("on selectAnimationType:"+data);
 			this.animationTypeSelect(data)
 		});
 
@@ -52,7 +52,8 @@ export default {
 			// if(!animationsType.includes(animationTypeSel)) return;
 			this.animationDestroy()
 			this.animationType = animationTypeSel;
-			console.log("animationTypeSelect:" ); console.log(animationTypeSel)
+			// console.log("animationTypeSelect:" );
+			// console.log(animationTypeSel)
 			this.setupCanvas();
 			this.updateCanvas();
 		},
